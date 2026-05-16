@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@multica/ui/components/ui/sonner";
 import { cn } from "@multica/ui/lib/utils";
 import { WebProviders } from "@/components/web-providers";
+import { LocaleSync } from "@/components/locale-sync";
+import { DirectionScript } from "@/components/direction-script";
 import {
   DEFAULT_LOCALE,
   SUPPORTED_LOCALES,
@@ -130,11 +132,13 @@ export default async function RootLayout({
 
   return (
     <html
-      lang={HTML_LANG[locale]}
+      lang="ar"
       suppressHydrationWarning
       className={cn("antialiased font-sans h-full", inter.variable, geistMono.variable, sourceSerif.variable)}
     >
       <body className="h-full overflow-hidden">
+        <DirectionScript />
+        <LocaleSync />
         <ThemeProvider>
           <WebProviders locale={locale} resources={resources}>
             {children}
